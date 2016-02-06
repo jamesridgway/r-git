@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
 
-require 'rgit'
-Rgit::CLI.parse(ARGV)
+require 'rgit/rgit'
+Rgit::Cli.parse(ARGV)
