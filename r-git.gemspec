@@ -4,13 +4,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'rgit/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'r-git'
+  spec.name          = 'rgit-git'
   spec.version       = Rgit::VERSION
   spec.authors       = ['James Ridgway']
   spec.email         = ['myself@james-ridgway.co.uk']
 
   spec.summary       = 'Executable gem for managing multiple git repositories in a top level directory.'
-  spec.description   = 'Executable gem for managing multiple git repositories in a top level directory. r-git allow
+  spec.description   = 'Executable gem for managing multiple git repositories in a top level directory. rgit-git allow
                         you to easily fetch, pull, change branch, etc. across multiple git repositories with a single
                         command.'
   spec.homepage      = 'http://www.james-ridgway.co.uk'
