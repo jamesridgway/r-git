@@ -7,13 +7,13 @@ module Rgit
 
         opts.on_tail('-h', '--help', 'Show this message') do
           puts opts
-          exit
+          return
         end
         opts.on_tail('--version', 'Show version') do
           puts Rgit::VERSION
-          exit
+          return
         end
-      end.parse!
+      end.parse!(args)
     end
   end
 end
