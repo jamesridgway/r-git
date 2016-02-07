@@ -2,25 +2,25 @@ require 'spec_helper'
 
 describe Rgit::Cli do
   it 'add root (default to pwd)' do
-    rgit = double()
+    rgit = double
     expect(rgit).to receive(:add_root).with(Dir.pwd)
 
     Rgit::Cli.parse(['--add-root'], rgit)
   end
   it 'add root' do
-    rgit = double()
+    rgit = double
     expect(rgit).to receive(:add_root).with('/some/path')
 
     Rgit::Cli.parse(['--add-root', '/some/path'], rgit)
   end
   it 'remove root (default to pwd)' do
-    rgit = double()
+    rgit = double
     expect(rgit).to receive(:remove_root).with(Dir.pwd)
 
     Rgit::Cli.parse(['--remove-root'], rgit)
   end
   it 'remove root' do
-    rgit = double()
+    rgit = double
     expect(rgit).to receive(:remove_root).with('/some/path')
 
     Rgit::Cli.parse(['--remove-root', '/some/path'], rgit)
