@@ -1,23 +1,43 @@
 require 'spec_helper'
 
 describe Rgit::Configuration do
-  it 'defaults to home directory config file' do
-    config = Rgit::Configuration.load
-    expect(config.filename).to eq(File.join(Dir.home, '.rgit.yml'))
+  include TestResources
+
+  context 'existing configuration file' do
+    config_file = create_temp_file('config_file.yml')
+
+    it 'loads specified config file' do
+      config = Rgit::Configuration.load config_file.path
+      expect(config.filename).to eq config_file.path
+    end
+
+    it 'loads root directories' do
+      content_for_file(config_file,
+                       "roots:\n"\
+                       "  - /path/root1\n"\
+                       '  - /mnt/root2')
+
+      config = Rgit::Configuration.load config_file.path
+      expect(config.roots).to eq ['/path/root1', '/mnt/root2']
+    end
   end
 
-  it 'loads specified config file' do
-    config = Rgit::Configuration.load test_resource('configuration_sample.yml').path
-    expect(config.filename).to end_with 'configuration_sample.yml'
+  context 'existing configuration file' do
   end
 
-  it 'loads root directories' do
-    config = Rgit::Configuration.load test_resource('configuration_sample.yml').path
-    expect(config.roots).to eq ['/path/root1', '/mnt/root2']
-  end
+  context 'empty configuration file' do
+    empty_config_file = create_temp_file('empty_config_file.yml')
+    new_root = create_temp_dir('new_root')
 
-  it 'empty roots for a config file that does not exist' do
-    config = Rgit::Configuration.load 'config_file_that_does_not_exist.yml'
-    expect(config.roots).to eq []
+    it 'has empty roots' do
+      config = Rgit::Configuration.load empty_config_file.path
+      expect(config.roots).to eq []
+    end
+
+    it 'add root configuration file' do
+      config = Rgit::Configuration.load empty_config_file.path
+      config.add_root(new_root.path)
+      expect(config.roots).to eq [new_root.path]
+    end
   end
 end
