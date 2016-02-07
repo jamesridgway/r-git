@@ -1,17 +1,20 @@
 module Rgit
   class Cli
-    def self.parse(args)
-      options = {}
+    include Rgit
+    def self.parse(args, rgit = Rgit.new)
       OptionParser.new do |opts|
         opts.banner = 'Usage: r-git [options]'
-
+        opts.on('--add-root [PATH]', 'Add a root directory (defaults to pwd).') do |root_path|
+          rgit.add_root(root_path.nil? ? Dir.pwd : root_path)
+        end
+        opts.on('--remove-root [PATH]', 'Remove a root directory (defaults to pwd).') do |root_path|
+          rgit.remove_root(root_path.nil? ? Dir.pwd : root_path)
+        end
         opts.on_tail('-h', '--help', 'Show this message') do
           puts opts
-          return
         end
         opts.on_tail('--version', 'Show version') do
-          puts Rgit::VERSION
-          return
+          puts VERSION
         end
       end.parse!(args)
     end
