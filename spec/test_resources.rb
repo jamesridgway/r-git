@@ -11,10 +11,9 @@ module TestResources
       FileUtils.touch(tmp_file)
     end
     define_method(:content_for_file) do |file, content|
-      f = File.open(file, 'w')
-      f.write(content)
-      f.flush
-      f.close
+      File.open(file, 'w') do |f|
+        f.write(content)
+      end
     end
     after do
       File.delete(tmp_file)
