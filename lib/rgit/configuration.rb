@@ -1,4 +1,6 @@
 require 'yaml'
+require 'fileutils'
+
 module Rgit
   class Configuration
     attr_reader :filename

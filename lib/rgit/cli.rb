@@ -1,7 +1,7 @@
 module Rgit
   class Cli
     include Rgit
-    def self.parse(args, rgit = Rgit.new)
+    def self.parse(args, rgit = Rgit.new(Configuration.exist? ? Configuration.load : Configuration.create))
       OptionParser.new do |opts|
         opts.banner = 'Usage: r-git [options]'
         opts.on('--add-root [PATH]', 'Add a root directory (defaults to pwd).') do |root_path|
