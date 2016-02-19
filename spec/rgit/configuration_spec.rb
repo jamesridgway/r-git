@@ -6,6 +6,10 @@ describe Rgit::Configuration do
   context 'existing configuration file' do
     config_file = create_temp_file('config_file.yml')
 
+    it 'detected as existing configuration file' do
+      expect(Rgit::Configuration.exist?(config_file.path)).to be true
+    end
+
     it 'loads specified config file' do
       config = Rgit::Configuration.load config_file.path
       expect(config.filename).to eq config_file.path
@@ -22,7 +26,10 @@ describe Rgit::Configuration do
     end
   end
 
-  context 'existing configuration file' do
+  context 'non-existant configuration file' do
+    it 'is detected as not existing' do
+      expect(Rgit::Configuration.exist?('some-random-file'.path)).to be false
+    end
   end
 
   context 'empty configuration file' do
