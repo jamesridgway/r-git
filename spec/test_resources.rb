@@ -21,6 +21,14 @@ module TestResources
     tmp_file
   end
 
+  def generate_temp_filename(filename)
+    tmp_file_path = Tempfile.new(filename).path
+    before do
+      File.delete(tmp_file_path)
+    end
+    tmp_file_path
+  end
+
   def create_temp_dir(prefix)
     tmp_dir = Dir.mktmpdir(prefix)
     after do
