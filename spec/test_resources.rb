@@ -31,6 +31,9 @@ module TestResources
 
   def create_temp_dir(prefix)
     tmp_dir = Dir.mktmpdir(prefix)
+    before do
+      tmp_dir = Dir.mktmpdir(prefix)
+    end
     after do
       FileUtils.rm_rf(tmp_dir)
     end

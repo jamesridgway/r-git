@@ -13,27 +13,26 @@ module Rgit
     def add_root(path)
       raise "Not a directory: #{path}" unless File.directory?(path)
       puts "Adding root: #{path}"
-      # TODO: Implement
+      @config.add_root path
+      @config.save
     end
 
     def remove_root(path)
       raise "Not a directory: #{path}" unless File.directory?(path)
       puts "Removing root: #{path}"
-      # TODO: Implement
+      @config.remove_root path
+      @config.save
     end
 
     def pull
-      # TODO: Implement
       recursive_cmd('pull')
     end
 
     def fetch
-      # TODO: Implement
       recursive_cmd('fetch')
     end
 
     def checkout(branch)
-      # TODO: Implement
       recursive_cmd("checkout #{branch}")
     end
 

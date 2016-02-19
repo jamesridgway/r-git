@@ -25,12 +25,16 @@ module Rgit
     end
 
     def add_root(path)
-      @roots << path
+      @roots << path unless @roots.include? path
+    end
+
+    def remove_root(path)
+      @roots.delete path
     end
 
     def save
       config = {
-          roots: @roots
+          'roots' => @roots
       }
       File.open(@filename, 'w') do |f|
         f.write config.to_yaml
