@@ -3,6 +3,17 @@ require 'spec_helper'
 describe Rgit::Configuration do
   include TestResources
 
+  context 'new configuration file' do
+    temp_file_path = generate_temp_filename('new_config_file.yml')
+
+    it 'can be created' do
+      config = Rgit::Configuration.create(temp_file_path)
+      expect(config.roots).to eq []
+
+    end
+
+  end
+
   context 'existing configuration file' do
     config_file = create_temp_file('config_file.yml')
 
@@ -26,9 +37,9 @@ describe Rgit::Configuration do
     end
   end
 
-  context 'non-existant configuration file' do
+  context 'non-existent configuration file' do
     it 'is detected as not existing' do
-      expect(Rgit::Configuration.exist?('some-random-file'.path)).to be false
+      expect(Rgit::Configuration.exist?('some-random-file')).to be false
     end
   end
 

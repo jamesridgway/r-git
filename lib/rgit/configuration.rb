@@ -8,8 +8,10 @@ module Rgit
     end
 
     def self.create(filename = File.join(Dir.home, '.rgit.yml'))
-      File.touch(Configuration.new(filename))
-      Configuration.new(filename)
+      FileUtils.touch(filename)
+      config = Configuration.new(filename)
+      config.save
+      config
     end
 
     def self.load(filename = File.join(Dir.home, '.rgit.yml'))
@@ -24,15 +26,26 @@ module Rgit
       @roots << path
     end
 
+    def save
+      config = {
+          roots: @roots
+      }
+      File.open(@filename, 'w') do |f|
+        f.write config.to_yaml
+      end
+    end
+
     private
 
     def initialize(filename)
       @filename = filename
       @roots = []
+
       return if File.size(filename) == 0
 
       yaml = YAML.load_file(filename)
       @roots = yaml['roots']
     end
+
   end
 end
