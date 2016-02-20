@@ -25,12 +25,19 @@ r-git has the concepts of 'roots' in our scenario `personal-projects` and `work-
 Running any of the following commands will result in that command being executed across all projects within the root:
 
 * `rgit -s`
+
   Status of all repositories
+
 * `rgit -p`
+
   Execute git pull on all repositories
+
 * `rgit -f`
+
   Execute git fetch on all repositories
+
 * `rgit -c development`
+
   Execute `git checkout development` on all repositories
 
 For example: executing `rgit -f` from within any folder in `personal-projects` will run git fetch on all repositories in that folder/root.
