@@ -21,7 +21,7 @@ module Rgit
     end
 
     def roots
-      @roots.freeze
+      @roots
     end
 
     def add_root(path)
