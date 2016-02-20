@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.description   = 'Executable gem for managing multiple git repositories in a top level directory. rgit-git allow
                         you to easily fetch, pull, change branch, etc. across multiple git repositories with a single
                         command.'
-  spec.homepage      = 'http://www.james-ridgway.co.uk'
+  spec.homepage      = 'https://github.com/jamesridgway/r-git'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
