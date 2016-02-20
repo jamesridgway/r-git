@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['myself@james-ridgway.co.uk']
 
   spec.summary       = 'Executable gem for managing multiple git repositories in a top level directory.'
-  spec.description   = 'Executable gem for managing multiple git repositories in a top level directory. rgit-git allow
+  spec.description   = 'Executable gem for managing multiple git repositories in a top level directory. r-git allow
                         you to easily fetch, pull, change branch, etc. across multiple git repositories with a single
                         command.'
   spec.homepage      = 'https://github.com/jamesridgway/r-git'
