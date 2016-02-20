@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'rgit/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'rgit'
+  spec.name          = 'r-git'
   spec.version       = Rgit::VERSION
   spec.authors       = ['James Ridgway']
   spec.email         = ['myself@james-ridgway.co.uk']
