@@ -55,15 +55,15 @@ module Rgit
     def status(path = Dir.pwd)
       recursive_cmd(path) do |git|
         unless git.status.untracked.empty?
-          puts " Untracked changes (#{git.branch}):".colorize(:light_red)
+          puts " Untracked changes (#{git.current_branch}):".colorize(:light_red)
           git.status.untracked.keys.each {|filename| puts "   - #{filename}" }
         end
         unless git.status.changed.empty?
-          puts " Uncommitted changes (#{git.branch}):".colorize(:light_magenta)
+          puts " Uncommitted changes (#{git.current_branch}):".colorize(:light_magenta)
           git.status.changed.keys.each {|filename| puts "   - #{filename}" }
         end
         if git.status.untracked.empty? && git.status.changed.empty?
-          puts " On branch: #{git.branch}".colorize(:green)
+          puts " On branch: #{git.current_branch}".colorize(:green)
         end
       end
     end
