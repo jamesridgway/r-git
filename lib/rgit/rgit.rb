@@ -68,6 +68,17 @@ module Rgit
       end
     end
 
+    def print_roots
+      if @config.roots.empty?
+        puts "No roots have been configured. Run 'rgit --add-root' to add the current directory as a root"
+      else
+        puts 'Roots:'
+        @config.roots.each do |root|
+          puts "  - #{root}"
+        end
+      end
+    end
+
     private
 
     def recursive_cmd(path, &block)

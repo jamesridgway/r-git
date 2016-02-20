@@ -10,6 +10,9 @@ module Rgit
         opts.on('--remove-root [PATH]', 'Remove a root directory (defaults to pwd).') do |root_path|
           rgit.remove_root(root_path.nil? ? Dir.pwd : root_path)
         end
+        opts.on('--show-roots', 'Show roots.') do |root_path|
+          rgit.print_roots
+        end
         opts.on('-p', '--pull', 'Git pull') do
           rgit.pull
         end
