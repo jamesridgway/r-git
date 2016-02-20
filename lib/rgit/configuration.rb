@@ -25,6 +25,7 @@ module Rgit
     end
 
     def add_root(path)
+      raise '"/" path unsupported!' if path == '/'
       @roots << path unless @roots.include? path
     end
 
@@ -39,6 +40,14 @@ module Rgit
       File.open(@filename, 'w') do |f|
         f.write config.to_yaml
       end
+    end
+
+    def find_root(path)
+      until @roots.include?(path)
+        path = File.expand_path('..', path)
+        raise 'Not in a root directory' if path == '/'
+      end
+      path
     end
 
     private
