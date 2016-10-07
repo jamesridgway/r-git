@@ -1,5 +1,7 @@
 # r-git
 
+[![Build Status](https://travis-ci.org/jamesridgway/r-git.svg?branch=master)](https://travis-ci.org/jamesridgway/r-git)
+
 r-git is an executable gem that assists with managing multiple git repositories. The current functionality allows you to perform the following actions on multiple repositories at once:
 * Pull
 * Checkout
