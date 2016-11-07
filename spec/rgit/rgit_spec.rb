@@ -4,19 +4,17 @@ describe Rgit do
   include TestResources
 
   context 'directory does not exist' do
-
     it 'error when adding as root' do
       config = double('mock config')
       rgit = Rgit::Rgit.new(config)
-      expect { rgit.add_root('some-non-existent-path')}.to raise_error('Not a directory: some-non-existent-path')
+      expect { rgit.add_root('some-non-existent-path') }.to raise_error('Not a directory: some-non-existent-path')
     end
 
     it 'error when removing as root' do
       config = double('mock config')
       rgit = Rgit::Rgit.new(config)
-      expect { rgit.remove_root('some-non-existent-path')}.to raise_error('Not a directory: some-non-existent-path')
+      expect { rgit.remove_root('some-non-existent-path') }.to raise_error('Not a directory: some-non-existent-path')
     end
-
   end
 
   context 'directory exists' do
@@ -39,11 +37,9 @@ describe Rgit do
       rgit = Rgit::Rgit.new(config)
       rgit.remove_root(parent_folder.path)
     end
-
   end
 
   it 'has a version number' do
     expect(Rgit::VERSION).not_to be nil
   end
-
 end

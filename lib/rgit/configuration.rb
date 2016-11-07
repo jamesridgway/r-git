@@ -3,7 +3,7 @@ require 'fileutils'
 
 module Rgit
   class Configuration
-    attr_reader :filename
+    attr_reader :filename, :roots
 
     def self.exist?(filename = File.join(Dir.home, '.rgit.yml'))
       File.exist?(filename)
@@ -20,10 +20,6 @@ module Rgit
       Configuration.new(filename)
     end
 
-    def roots
-      @roots
-    end
-
     def add_root(path)
       raise '"/" path unsupported!' if path == '/'
       @roots << path unless @roots.include? path
@@ -34,9 +30,7 @@ module Rgit
     end
 
     def save
-      config = {
-          'roots' => @roots
-      }
+      config = { 'roots' => @roots }
       File.open(@filename, 'w') do |f|
         f.write config.to_yaml
       end
@@ -56,11 +50,10 @@ module Rgit
       @filename = filename
       @roots = []
 
-      return if File.size(filename) == 0
+      return if File.size(filename).zero?
 
       yaml = YAML.load_file(filename)
       @roots = yaml['roots']
     end
-
   end
 end
