@@ -1,6 +1,8 @@
 # r-git
 
 [![Build Status](https://travis-ci.org/jamesridgway/r-git.svg?branch=master)](https://travis-ci.org/jamesridgway/r-git)
+[![Code Climate](https://codeclimate.com/github/jamesridgway/r-git/badges/gpa.svg)](https://codeclimate.com/github/jamesridgway/r-git)
+[![Test Coverage](https://codeclimate.com/github/jamesridgway/r-git/badges/coverage.svg)](https://codeclimate.com/github/jamesridgway/r-git/coverage)
 
 r-git is an executable gem that assists with managing multiple git repositories. The current functionality allows you to perform the following actions on multiple repositories at once:
 * Pull
