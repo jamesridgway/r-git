@@ -15,12 +15,28 @@ describe Rgit::Cli do
       Rgit::Cli.parse(['--add-root', '/some/path'], rgit)
     end
   end
+
   context 'remove root' do
     it 'remove root (default to pwd)' do
       rgit = double
       expect(rgit).to receive(:remove_root).with(Dir.pwd)
 
       Rgit::Cli.parse(['--remove-root'], rgit)
+    end
+    it 'remove root' do
+      rgit = double
+      expect(rgit).to receive(:remove_root).with('/some/path')
+
+      Rgit::Cli.parse(['--remove-root', '/some/path'], rgit)
+    end
+  end
+
+  context 'show roots' do
+    it 'show roots invokes print_roots' do
+      rgit = double
+      expect(rgit).to receive(:print_roots)
+
+      Rgit::Cli.parse(['--show-root'], rgit)
     end
     it 'remove root' do
       rgit = double
