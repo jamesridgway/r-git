@@ -39,6 +39,26 @@ describe Rgit do
     end
   end
 
+  context 'print roots' do
+    it 'no roots exist' do
+      config = double('mock config')
+      allow(config).to receive(:roots).and_return([])
+      rgit = Rgit::Rgit.new(config)
+      expect do
+        rgit.print_roots
+      end.to output("No roots have been configured. Run 'rgit --add-root' to add the current directory as a root\n")
+        .to_stdout
+    end
+    it 'roots exist' do
+      config = double('mock config')
+      allow(config).to receive(:roots).and_return(['/path/repo1', '/path/repo2'])
+      rgit = Rgit::Rgit.new(config)
+      expect do
+        rgit.print_roots
+      end.to output("Roots:\n  - /path/repo1\n  - /path/repo2\n").to_stdout
+    end
+  end
+
   it 'has a version number' do
     expect(Rgit::VERSION).not_to be nil
   end
