@@ -59,6 +59,18 @@ describe Rgit do
     end
   end
 
+  context 'root with 2 sample repositories' do
+    config = setup_test_root
+    it 'checkout branch' do
+      git1 = add_mock_repo(config)
+      git2 = add_mock_repo(config)
+      expect(git1).to receive(:checkout).with('master')
+      expect(git2).to receive(:checkout).with('master')
+      rgit = Rgit::Rgit.new(config)
+      rgit.checkout('master', config.roots[0])
+    end
+  end
+
   it 'has a version number' do
     expect(Rgit::VERSION).not_to be nil
   end
