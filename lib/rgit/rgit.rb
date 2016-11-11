@@ -6,8 +6,11 @@ require 'git'
 require 'colorize'
 module Rgit
   class Rgit
+    attr_accessor :verbose
+
     def initialize(config)
       @config = config
+      @verbose = false
     end
 
     def add_root(path)
@@ -29,7 +32,7 @@ module Rgit
         git.remotes.each do |remote|
           puts " Pulling remote: #{remote.name}".colorize(:light_cyan)
           results = git.pull(remote.name, git.current_branch)
-          puts results.split("\n").map { |l| "   #{l}" }.join("\n")
+          puts results.split("\n").map { |l| "   #{l}" }.join("\n") if @verbose
         end
       end
     end
@@ -39,7 +42,7 @@ module Rgit
         git.remotes.each do |remote|
           puts " Fetching remote: #{remote.name}".colorize(:light_cyan)
           results = git.fetch(remote.name, all: true)
-          puts results.split("\n").map { |l| "   #{l}" }.join("\n")
+          puts results.split("\n").map { |l| "   #{l}" }.join("\n") if @verbose
         end
       end
     end

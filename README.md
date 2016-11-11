@@ -24,27 +24,27 @@ Imagine the scenario where you have several git projects under some parent:
 
 r-git has the concepts of 'roots' in our scenario `personal-projects` and `work-projects` are our roots. I register these by running the following from within each folder:
 
-    $ rgit --add-root
+    $ rgit add-root
 
 Running any of the following commands will result in that command being executed across all projects within the root:
 
-* `rgit -s`
+* `rgit status`
 
   Status of all repositories
 
-* `rgit -p`
+* `rgit pull`
 
   Execute git pull on all repositories
 
-* `rgit -f`
+* `rgit fetch`
 
   Execute git fetch on all repositories
 
-* `rgit -c development`
+* `rgit checkout development`
 
   Execute `git checkout development` on all repositories
 
-For example: executing `rgit -f` from within any folder in `personal-projects` will run git fetch on all repositories in that folder/root.
+For example: executing `rgit fetch` from within any folder in `personal-projects` will run git fetch on all repositories in that folder/root.
 
 It's that simple!
 
@@ -56,16 +56,22 @@ Install it yourself as:
 ## Usage
 r-git is an executable gem with the following CLI options.
 
-    Usage: rgit [options]
-            --add-root [PATH]            Add a root directory (defaults to pwd).
-            --remove-root [PATH]         Remove a root directory (defaults to pwd).
-            --show-roots                 Show roots.
-        -p, --pull                       Git pull
-        -f, --fetch                      Git fetch
-        -c, --checkout BRANCH            Git checkout
-        -s, --status                     Git status
-        -h, --help                       Show this message
-            --version                    Show version
+    USAGE:
+        rgit [global options] COMMAND [command options]
+    
+    GLOBAL OPTIONS:
+        -v                         Run verbosely
+    
+    COMMANDS:
+        add-root [PATH]            Add a root directory (defaults to pwd).
+        remove-root [PATH]         Remove a root directory (defaults to pwd).
+        show-roots                 Show roots.
+        pull                       Git pull
+        fetch                      Git fetch
+        checkout BRANCH            Git checkout
+        status                     Git status
+        -h, --help                 Show this message
+        version                    Show version
 
 See the main description for examples of how to use r-git
 

@@ -1,8 +1,17 @@
+CaseIndentation:
+  IndentWhenRelativeTo: case
+  IndentOneStep: true
 Documentation:
   Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - lib/rgit/cli.rb
 Metrics/LineLength:
   Max: 120
 Metrics/MethodLength:
   Max: 40
-Metrics/AbcSize:
-  Enabled: false
+Metrics/PerceivedComplexity:
+  Exclude:
+    - lib/rgit/cli.rb
