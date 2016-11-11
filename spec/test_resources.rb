@@ -39,6 +39,7 @@ module TestResources
     end
     Dir.open(tmp_dir)
   end
+
   def setup_test_root
     root_dir = create_temp_dir('root_folder')
     after do
@@ -49,6 +50,7 @@ module TestResources
     config.add_root(root_dir.path)
     config
   end
+
   def add_mock_repo(config)
     root_dir = config.roots[0]
     repo_path = File.join(root_dir, SecureRandom.hex(4), 'repo1')

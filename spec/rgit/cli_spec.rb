@@ -5,14 +5,16 @@ describe Rgit::Cli do
     it 'add root (default to pwd)' do
       rgit = double
       expect(rgit).to receive(:add_root).with(Dir.pwd)
+      expect(rgit).to receive(:verbose=).with(false)
 
-      Rgit::Cli.parse(['--add-root'], rgit)
+      Rgit::Cli.parse(['add-root'], rgit)
     end
     it 'add root' do
       rgit = double
       expect(rgit).to receive(:add_root).with('/some/path')
+      expect(rgit).to receive(:verbose=).with(false)
 
-      Rgit::Cli.parse(['--add-root', '/some/path'], rgit)
+      Rgit::Cli.parse(%w(add-root /some/path), rgit)
     end
   end
 
@@ -20,14 +22,16 @@ describe Rgit::Cli do
     it 'remove root (default to pwd)' do
       rgit = double
       expect(rgit).to receive(:remove_root).with(Dir.pwd)
+      expect(rgit).to receive(:verbose=).with(false)
 
-      Rgit::Cli.parse(['--remove-root'], rgit)
+      Rgit::Cli.parse(['remove-root'], rgit)
     end
     it 'remove root' do
       rgit = double
       expect(rgit).to receive(:remove_root).with('/some/path')
+      expect(rgit).to receive(:verbose=).with(false)
 
-      Rgit::Cli.parse(['--remove-root', '/some/path'], rgit)
+      Rgit::Cli.parse(%w(remove-root /some/path), rgit)
     end
   end
 
@@ -35,79 +39,59 @@ describe Rgit::Cli do
     it 'show roots invokes print_roots' do
       rgit = double
       expect(rgit).to receive(:print_roots)
+      expect(rgit).to receive(:verbose=).with(false)
 
-      Rgit::Cli.parse(['--show-root'], rgit)
+      Rgit::Cli.parse(['show-root'], rgit)
     end
     it 'remove root' do
       rgit = double
       expect(rgit).to receive(:remove_root).with('/some/path')
+      expect(rgit).to receive(:verbose=).with(false)
 
-      Rgit::Cli.parse(['--remove-root', '/some/path'], rgit)
+      Rgit::Cli.parse(%w(remove-root /some/path), rgit)
     end
   end
 
   context 'git pull' do
-    it '-p' do
+    it 'pull' do
       rgit = double
       expect(rgit).to receive(:pull)
-      Rgit::Cli.parse(['-p'], rgit)
-    end
-    it '--pull' do
-      rgit = double
-      expect(rgit).to receive(:pull)
-      Rgit::Cli.parse(['--pull'], rgit)
+      expect(rgit).to receive(:verbose=).with(false)
+
+      Rgit::Cli.parse(['pull'], rgit)
     end
   end
 
   context 'git fetch' do
-    it '-f' do
+    it 'fetch' do
       rgit = double
       expect(rgit).to receive(:fetch)
-      Rgit::Cli.parse(['-f'], rgit)
-    end
-    it '--fetch' do
-      rgit = double
-      expect(rgit).to receive(:fetch)
-      Rgit::Cli.parse(['--fetch'], rgit)
+      expect(rgit).to receive(:verbose=).with(false)
+      Rgit::Cli.parse(['fetch'], rgit)
     end
   end
 
   context 'git checkout' do
-    it '-c development' do
+    it 'checkout development' do
       rgit = double
       expect(rgit).to receive(:checkout).with('development')
-      Rgit::Cli.parse(['-c', 'development'], rgit)
-    end
-    it '--checkout development' do
-      rgit = double
-      expect(rgit).to receive(:checkout).with('development')
-      Rgit::Cli.parse(['--checkout', 'development'], rgit)
+      expect(rgit).to receive(:verbose=).with(false)
+
+      Rgit::Cli.parse(%w(checkout development), rgit)
     end
   end
 
   context 'git status' do
-    it '-s' do
+    it 'status' do
       rgit = double
       expect(rgit).to receive(:status)
-      Rgit::Cli.parse(['-s'], rgit)
-    end
-    it '--status' do
-      rgit = double
-      expect(rgit).to receive(:status)
-      Rgit::Cli.parse(['--status'], rgit)
-    end
-  end
+      expect(rgit).to receive(:verbose=).with(false)
 
-  context 'help' do
-    it '-h' do
-      expect { Rgit::Cli.parse(['-h']) }.to output(/Usage: rgit/).to_stdout
-    end
-    it '--help' do
-      expect { Rgit::Cli.parse(['--help']) }.to output(/Usage: rgit/).to_stdout
+      Rgit::Cli.parse(['status'], rgit)
     end
   end
 
   it 'displays version' do
-    expect { Rgit::Cli.parse(['--version']) }.to output("#{Rgit::VERSION}\n").to_stdout
+    expect { Rgit::Cli.parse(['version']) }.to output("rgit #{Rgit::VERSION}\n").to_stdout
   end
 end
