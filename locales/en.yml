@@ -1,0 +1,26 @@
+en:
+  rgit:
+    banner: |
+      rgit is a utility for managing multiple git repositories.
+
+      USAGE:
+        rgit [global options] COMMAND [command options]
+
+      GLOBAL OPTIONS:
+        -v                         Run verbosely
+
+      COMMANDS:
+        add-root [PATH]            Add a root directory (defaults to working directory).
+        remove-root [PATH]         Remove a root directory (defaults to working directory).
+        show-roots                 Show roots.
+        pull                       Git pull.
+        fetch                      Git fetch.
+        checkout BRANCH            Git checkout
+        status                     Git status
+        -h, --help                 Show this message
+        version                    Show version
+
+      ADDITIONAL HELP:
+        rgit COMMAND -h
+
+      OPTIONS

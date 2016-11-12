@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
-
 require 'rgit/rgit'
+require 'i18n'
+I18n.load_path << File.expand_path('../../locales/en.yml', __FILE__)
+I18n.reload!
+
 Rgit::Cli.parse(ARGV)

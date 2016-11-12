@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'trollop', '~> 2.1.2'
   spec.add_dependency 'git', '~> 1.2.9'
   spec.add_dependency 'colorize', '~> 0.7.7'
+  spec.add_dependency 'i18n', '~> 0.7.0'
 end

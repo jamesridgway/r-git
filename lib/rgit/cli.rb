@@ -8,7 +8,7 @@ module Rgit
 
     def self.parse(args, rgit = Rgit.new(Configuration.exist? ? Configuration.load : Configuration.create))
       global_opts = Trollop.options(args) do
-        banner 'rgit is a utility for managing multiple git repositories'
+        banner I18n.t('rgit.banner')
         opt :verbose, 'Run verbosely', short: '-v'
         stop_on SUB_COMMANDS
       end

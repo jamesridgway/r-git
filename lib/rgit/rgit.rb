@@ -4,6 +4,7 @@ require 'rgit/cli'
 require 'optparse'
 require 'git'
 require 'colorize'
+require 'i18n'
 module Rgit
   class Rgit
     attr_accessor :verbose
@@ -104,7 +105,7 @@ module Rgit
       end.sort
       dirs.each do |dir|
         dir_path = File.join(path, dir)
-        if File.exist?(File.join(dir_path, '.git', 'config'))
+        if File.exist?(File.join(dir_path, '.git', 'configs'))
           git_repos << Git.open(dir_path)
         else
           git_repos.concat repositories(dir_path)
