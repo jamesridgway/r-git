@@ -12,6 +12,3 @@ Metrics/LineLength:
   Max: 120
 Metrics/MethodLength:
   Max: 40
-Metrics/PerceivedComplexity:
-  Exclude:
-    - lib/rgit/cli.rb
