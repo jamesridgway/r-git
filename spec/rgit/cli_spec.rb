@@ -41,7 +41,7 @@ describe Rgit::Cli do
       expect(rgit).to receive(:print_roots)
       expect(rgit).to receive(:verbose=).with(false)
 
-      Rgit::Cli.parse(['show-root'], rgit)
+      Rgit::Cli.parse(['show-roots'], rgit)
     end
     it 'remove root' do
       rgit = double

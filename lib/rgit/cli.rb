@@ -9,7 +9,7 @@ module Rgit
     def self.parse(args, rgit = Rgit.new(Configuration.exist? ? Configuration.load : Configuration.create))
       global_opts = Trollop.options(args) do
         banner I18n.t('rgit.banner')
-        opt :verbose, 'Run verbosely', short: '-v'
+        opt :verbose, I18n.t('rgit.run_verbosely'), short: '-v'
         stop_on SUB_COMMANDS
       end
 
@@ -26,11 +26,11 @@ module Rgit
         when 'checkout'
           branch = args[0] if args.size == 1
           unless branch
-            puts 'ERROR: checkout subcommand expects a branch name'.red
+            puts I18n.t('branch.expect_name').red
             return
           end
           rgit.checkout branch
-        when 'show-root'
+        when 'show-roots'
           rgit.print_roots
         when 'pull'
           rgit.pull
@@ -41,7 +41,7 @@ module Rgit
         when 'version'
           puts "rgit #{VERSION}"
         else
-          puts "ERROR: unknown subcommand #{cmd}".red
+          puts I18n.t('rgit.unknown_subcommand', command: cmd).red
           return
       end
     end
