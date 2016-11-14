@@ -1,4 +1,62 @@
 en:
+  add_root:
+    adding_root: 'Adding root: %{path}'
+    banner: |
+      USAGE:
+        rgit add-root [PATH]
+
+      DESCRIPTION:
+        Add a root directory (PATH defaults to working directory if not specified).
+
+        A 'root' is a parent directory containing many git repositories. By adding a
+        directory as a root directory rgit can execute commands on all repositories
+        within that root. Regarless of whether you are in a specfic repository or the
+        parent folder.
+
+      OPTIONS:
+  branch:
+    expect_name: 'ERROR: checkout subcommand expects a branch name'
+  checkout:
+    banner: |
+      USAGE:
+        rgit checkout BRANCH
+
+      DESCRIPTION:
+        Checkout the specified branch across all git repositories.
+
+      OPTIONS:
+    checkout_branch: 'Checking branch: %{branch}'
+  failed: 'Failed'
+  fetch:
+    banner: |
+      USAGE:
+        rgit fetch
+
+      DESCRIPTION:
+        Fetch all repositories within the root (based on working directory).
+
+      OPTIONS
+    fetching_remote: 'Fetching remote: %{name}'
+  pull:
+    banner: |
+      USAGE:
+        rgit pull
+
+      DESCRIPTION:
+        Pull all repositories within the root (based on working directory).
+
+      OPTIONS
+    pulling_remote: 'Pulling remote: %{name}'
+  remove_root:
+    banner: |
+      USAGE:
+        rgit remove-root [PATH]
+
+      DESCRIPTION:
+        Remove a root directory (PATH defaults to working directory if not specified).
+
+      OPTIONS
+    removing_root: 'Removing root: %{path}'
   rgit:
     banner: |
       rgit is a utility for managing multiple git repositories.
@@ -23,27 +81,35 @@ en:
       ADDITIONAL HELP:
         rgit COMMAND -h
 
-      OPTIONS
+      OPTIONS:
     run_verbosely: 'Run verbosely'
     unknown_subcommand: 'ERROR: unknown subcommand %{command}'
-  branch:
-    expect_name: 'ERROR: checkout subcommand expects a branch name'
-  add_root:
-    adding_root: 'Adding root: %{path}'
-  remove_root:
-    removing_root: 'Removing root: %{path}'
-  roots: 'Roots'
   repository: 'Repository'
-  failed: 'Failed'
+  roots: 'Roots'
   show_roots:
+    banner: |
+      USAGE:
+        rgit show-roots
+
+      DESCRIPTION:
+        Lists the root directories that have been configured.
+
+        A 'root' is a parent directory containing many git repositories. From within
+        a root directory or sub directory of a root it is possible to execute an rgit
+        command across all repositories within that root.
+
+      OPTIONS
     no_routes_configured: "No roots have been configured. Run 'rgit --add-root' to add the current directory as a root"
-  pull:
-    pulling_remote: 'Pulling remote: %{name}'
-  fetch:
-    fetching_remote: 'Fetching remote: %{name}'
-  checkout:
-    checkout_branch: 'Checking branch: %{branch}'
   status:
+    banner: |
+      USAGE:
+        rgit status
+
+      DESCRIPTION:
+        Show a status summary of all repositories within the root (based on working
+        directory).
+
+      OPTIONS
     untracked_changes: 'Untracked changes: %{branch}'
     uncommitted_changes: 'Uncommitted changes: %{branch}'
     on_branch: 'On branch: %{branch}'
