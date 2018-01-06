@@ -10,6 +10,8 @@ r-git is an executable gem that assists with managing multiple git repositories.
 * Fetch
 * View the status
 
+![r-git - pull multiple repositories](https://files.james-ridgway.co.uk/r-git.png)
+
 Imagine the scenario where you have several git projects under some parent:
 
     └── personal-projects
@@ -84,7 +86,6 @@ To release a new version, update the version number in `version.rb`, and then ru
 
 ## Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/jamesridgway/r-git.
-
 
 ## License
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
