@@ -10,6 +10,8 @@ r-git is an executable gem that assists with managing multiple git repositories.
 * Fetch
 * View the status
 
+![r-git - pull multiple repositories](https://files.james-ridgway.co.uk/r-git.png)
+
 Imagine the scenario where you have several git projects under some parent:
 
     └── personal-projects
