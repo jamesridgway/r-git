@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'r-git'
   spec.version       = Rgit::VERSION
   spec.authors       = ['James Ridgway']
-  spec.email         = ['myself@james-ridgway.co.uk']
+  spec.email         = ['james@jamesridgway.co.uk']
 
   spec.summary       = 'Executable gem for managing multiple git repositories in a top level directory.'
   spec.description   = 'Executable gem for managing multiple git repositories in a top level directory. r-git allow
@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 1.11'
+  spec.add_development_dependency 'bundler', '~> 2.1.2'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.7.0'
   spec.add_development_dependency 'rubocop', '~> 0.52.1'
